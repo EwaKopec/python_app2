@@ -18,7 +18,7 @@ def index():
     """Show all the posts, most recent first."""
     db = get_db()
     books = db.execute(
-        "SELECT b.id, title, body, created, author_id, year_of_book, username"
+        "SELECT b.id, title, author, body, created, author_id, year_of_book, username"
         " FROM book b JOIN user u ON b.author_id = u.id"
         " ORDER BY created DESC"
     ).fetchall()
@@ -40,7 +40,7 @@ def get_post(id, check_author=True):
     post = (
         get_db()
         .execute(
-            "SELECT b.id, title, body, created, b.author_id, year_of_book, username"
+            "SELECT b.id, title, author, body, created, b.author_id, year_of_book, username"
             " FROM book b JOIN user u ON b.author_id = u.id"
             " WHERE b.id = ?",
             (id,),
@@ -94,7 +94,7 @@ def update(id):
     if request.method == "POST":
         title = request.form["title"]
         author = request.form["author"]
-        year = request.form["year"]
+        year = request.form["year_of_book"]
         body = request.form["body"]
         error = None
 

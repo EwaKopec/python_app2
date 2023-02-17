@@ -11,8 +11,8 @@
     <label for="author">Author</label>
     <input name="author" id="author" value="{{ request.form['author'] or post['author'] }}" required>
     <label for="year">Year</label>
-    <input name="year" id="year" value="{{ request.form['year'] or post['year'] }}" required>
-    <label for="body">Body</label>
+    <input name="year_of_book" id="year_of_book" value="{{ request.form['year_of_book'] or post['year_of_book'] }}" required>
+    <label for="body">Description</label>
     <textarea name="body" id="body">{{ request.form['body'] or post['body'] }}</textarea>
     <input type="submit" value="Save">
   </form>
